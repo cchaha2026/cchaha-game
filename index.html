@@ -8,291 +8,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #FF6B6B;
-            --secondary: #FFE66D;
-            --accent: #4ECDC4;
-            --dark: #2C3E50;
-            --light: #F7F9FC;
-            --purple: #9B59B6;
+            --primary: #FF6B6B; --secondary: #FFE66D; --accent: #4ECDC4;
+            --dark: #2C3E50; --light: #F7F9FC; --purple: #9B59B6;
         }
-
         body {
-            font-family: 'Noto Sans SC', 'Poppins', sans-serif;
+            font-family: 'Noto Sans SC', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;
         }
-
-        .container {
-            width: 100%;
-            max-width: 500px;
-        }
-
+        .container { width: 100%; max-width: 500px; }
         .card {
-            background: white;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: fadeIn 0.5s ease;
+            background: white; border-radius: 24px; padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: fadeIn 0.5s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        h1 {
-            font-size: 2rem;
-            color: var(--dark);
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
+        h1 { font-size: 2rem; color: var(--dark); text-align: center; margin-bottom: 30px; font-weight: 700; }
         h1 span {
             background: linear-gradient(135deg, var(--primary), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
-        .setup-group {
-            margin-bottom: 24px;
-        }
-
-        .setup-label {
-            display: block;
-            font-size: 1rem;
-            color: var(--dark);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .slider-container {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
+        .setup-group { margin-bottom: 24px; }
+        .setup-label { display: block; font-size: 1rem; color: var(--dark); margin-bottom: 12px; font-weight: 600; }
+        .slider-container { display: flex; align-items: center; gap: 16px; }
         .slider {
-            flex: 1;
-            -webkit-appearance: none;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-            outline: none;
+            flex: 1; -webkit-appearance: none; height: 8px; border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary)); outline: none;
         }
-
         .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: transform 0.2s;
+            -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%;
+            background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s;
         }
-
-        .slider::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-        }
-
+        .slider::-webkit-slider-thumb:hover { transform: scale(1.1); }
         .slider-value {
-            min-width: 60px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            min-width: 60px; text-align: center; font-size: 1.5rem; font-weight: 700; color: var(--primary);
         }
-
         .btn {
-            width: 100%;
-            padding: 16px 32px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            width: 100%; padding: 16px 32px; font-size: 1.1rem; font-weight: 600;
+            border: none; border-radius: 16px; cursor: pointer; transition: all 0.3s ease; font-family: inherit;
         }
-
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #FF8E53);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), #FF8E53); color: white;
             box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(255, 107, 107, 0.5);
-        }
-
-        .btn-secondary {
-            background: var(--accent);
-            color: white;
-            margin-top: 12px;
-        }
-
-        .btn-secondary:hover {
-            background: #3DBDB5;
-        }
-
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255, 107, 107, 0.5); }
+        .btn-secondary { background: var(--accent); color: white; margin-top: 12px; }
+        .btn-secondary:hover { background: #3DBDB5; }
         .word-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 60px 40px;
-            text-align: center;
-            color: white;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            transform-style: preserve-3d;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px;
+            padding: 60px 40px; text-align: center; color: white; cursor: pointer;
+            transition: all 0.4s ease; min-height: 250px; display: flex;
+            flex-direction: column; justify-content: center; align-items: center;
         }
-
-        .word-card:hover {
-            transform: scale(1.02);
-        }
-
-        .word-card.flipped {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-        }
-
-        .player-number {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .word-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 20px 0;
-        }
-
-        .tap-hint {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 20px;
-        }
-
+        .word-card:hover { transform: scale(1.02); }
+        .word-card.flipped { background: linear-gradient(135deg, var(--secondary), var(--primary)); }
+        .player-number { font-size: 1.2rem; margin-bottom: 20px; opacity: 0.9; }
+        .word-text { font-size: 2.5rem; font-weight: 700; margin: 20px 0; }
+        .tap-hint { font-size: 1rem; opacity: 0.8; margin-top: 20px; }
         .players-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin: 24px 0;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0;
         }
-
         .player-chip {
-            padding: 12px 8px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            background: var(--light);
-            color: var(--dark);
-            transition: all 0.3s;
-            cursor: pointer;
+            padding: 12px 8px; border-radius: 12px; text-align: center; font-weight: 600;
+            background: var(--light); color: var(--dark); transition: all 0.3s; cursor: pointer;
         }
-
-        .player-chip:hover {
-            transform: scale(1.05);
-        }
-
-        .player-chip.eliminated {
-            background: #ddd;
-            color: #999;
-            text-decoration: line-through;
-        }
-
-        .player-chip.vote {
-            background: var(--primary);
-            color: white;
-        }
-
-        .status-text {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin: 20px 0;
-        }
-
-        .result-page {
-            text-align: center;
-        }
-
-        .result-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .result-title.win {
-            color: var(--accent);
-        }
-
-        .result-title.lose {
-            color: var(--primary);
-        }
-
-        .words-reveal {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 30px 0;
-        }
-
-        .word-reveal {
-            flex: 1;
-            padding: 20px;
-            border-radius: 16px;
-        }
-
-        .word-reveal.civilian {
-            background: linear-gradient(135deg, var(--accent), #3DBDB5);
-            color: white;
-        }
-
-        .word-reveal.spy {
-            background: linear-gradient(135deg, var(--purple), #8E44AD);
-            color: white;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .confetti {
-            position: fixed;
-            pointer-events: none;
-        }
-
+        .player-chip:hover { transform: scale(1.05); }
+        .player-chip.eliminated { background: #ddd; color: #999; text-decoration: line-through; }
+        .player-chip.vote { background: var(--primary); color: white; }
+        .status-text { text-align: center; font-size: 1.1rem; color: var(--dark); margin: 20px 0; }
+        .result-page { text-align: center; }
+        .result-title { font-size: 2rem; font-weight: 700; margin-bottom: 20px; }
+        .result-title.win { color: var(--accent); }
+        .result-title.lose { color: var(--primary); }
+        .words-reveal { display: flex; gap: 20px; justify-content: center; margin: 30px 0; }
+        .word-reveal { flex: 1; padding: 20px; border-radius: 16px; }
+        .word-reveal.civilian { background: linear-gradient(135deg, var(--accent), #3DBDB5); color: white; }
+        .word-reveal.spy { background: linear-gradient(135deg, var(--purple), #8E44AD); color: white; }
+        .hidden { display: none; }
+        .confetti { position: fixed; pointer-events: none; }
+        .stats-info { text-align: center; font-size: 0.9rem; color: var(--dark); opacity: 0.7; margin-top: 16px; }
         @media (max-width: 480px) {
-            .card {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 1.6rem;
-            }
-            
-            .players-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .card { padding: 30px 20px; }
+            h1 { font-size: 1.6rem; }
+            .players-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -300,7 +102,6 @@
     <div class="container">
         <div class="card">
             <h1>🎭 <span>谁是卧底</span></h1>
-
             <div id="setup-page">
                 <div class="setup-group">
                     <label class="setup-label">玩家人数</label>
@@ -309,7 +110,6 @@
                         <span class="slider-value" id="player-count-display">4</span>
                     </div>
                 </div>
-
                 <div class="setup-group">
                     <label class="setup-label">卧底人数</label>
                     <div class="slider-container">
@@ -317,10 +117,9 @@
                         <span class="slider-value" id="spy-count-display">1</span>
                     </div>
                 </div>
-
                 <button class="btn btn-primary" onclick="startGame()">开始游戏</button>
+                <div class="stats-info" id="stats-info">词语库：200组 | 本次已用：0组 | 剩余：200组</div>
             </div>
-
             <div id="word-page" class="hidden">
                 <div class="word-card" id="word-card" onclick="revealWord()">
                     <div class="player-number" id="current-player-text">玩家 1</div>
@@ -330,20 +129,17 @@
                 </div>
                 <button class="btn btn-secondary hidden" id="start-play-btn" onclick="startPlaying()">开始描述</button>
             </div>
-
             <div id="play-page" class="hidden">
                 <div class="status-text">轮流描述你的词语吧！</div>
                 <div class="players-grid" id="players-grid"></div>
                 <button class="btn btn-primary" onclick="startVoting()">开始投票</button>
                 <button class="btn btn-secondary" onclick="resetGame()">重新开始</button>
             </div>
-
             <div id="vote-page" class="hidden">
                 <div class="status-text">你怀疑谁是卧底？</div>
                 <div class="players-grid" id="vote-grid"></div>
                 <button class="btn btn-secondary" onclick="goBackToPlay()">取消</button>
             </div>
-
             <div id="result-page" class="hidden">
                 <div class="result-page">
                     <div class="result-title" id="result-title"></div>
@@ -364,35 +160,673 @@
     </div>
 
     <script>
-        const wordPairs = [
+        const allWordPairs = [
             { category: '网络热词', civilianWord: 'yyds', spyWord: '绝绝子' },
             { category: '网络热词', civilianWord: '躺平', spyWord: '摆烂' },
             { category: '网络热词', civilianWord: '社恐', spyWord: '社牛' },
             { category: '网络热词', civilianWord: '破防', spyWord: 'emo' },
             { category: '网络热词', civilianWord: '内卷', spyWord: '内耗' },
+            { category: '网络热词', civilianWord: '摸鱼', spyWord: '划水' },
+            { category: '网络热词', civilianWord: '吐槽', spyWord: '阴阳' },
+            { category: '网络热词', civilianWord: '上头', spyWord: '头铁' },
+            { category: '网络热词', civilianWord: '凡尔赛', spyWord: '显摆' },
+            { category: '网络热词', civilianWord: '柠檬精', spyWord: '醋王' },
+            { category: '网络热词', civilianWord: '打工人', spyWord: '搬砖人' },
+            { category: '网络热词', civilianWord: '干饭人', spyWord: '吃货' },
+            { category: '网络热词', civilianWord: '气氛组', spyWord: '控评组' },
+            { category: '网络热词', civilianWord: '工具人', spyWord: '老实人' },
+            { category: '网络热词', civilianWord: '小镇做题家', spyWord: '985废物' },
+            { category: '网络热词', civilianWord: '社交牛逼症', spyWord: '社恐' },
+            { category: '网络热词', civilianWord: '格局打开', spyWord: '格局小了' },
+            { category: '网络热词', civilianWord: '奥利给', spyWord: '加油' },
+            { category: '网络热词', civilianWord: '集美', spyWord: '闺蜜' },
+            { category: '网络热词', civilianWord: '老铁', spyWord: '兄弟' },
+            { category: '网络热词', civilianWord: '扎心', spyWord: '戳心' },
+            { category: '网络热词', civilianWord: '真香', spyWord: '打脸' },
+            { category: '网络热词', civilianWord: '海王', spyWord: '海后' },
+            { category: '网络热词', civilianWord: '舔狗', spyWord: '备胎' },
+            { category: '网络热词', civilianWord: '高富帅', spyWord: '白富美' },
+            { category: '网络热词', civilianWord: '渣男', spyWord: '渣女' },
+            { category: '网络热词', civilianWord: '直男', spyWord: '直女' },
+            { category: '网络热词', civilianWord: '普信', spyWord: '自信' },
+            { category: '网络热词', civilianWord: '恋爱脑', spyWord: '事业脑' },
+            { category: '网络热词', civilianWord: '傻白甜', spyWord: '心机婊' },
+            { category: '网络热词', civilianWord: '小鲜肉', spyWord: '老腊肉' },
+            { category: '网络热词', civilianWord: '单身狗', spyWord: '恩爱狗' },
+            { category: '网络热词', civilianWord: '键盘侠', spyWord: '键盘战士' },
+            { category: '网络热词', civilianWord: '杠精', spyWord: '喷子' },
+            { category: '网络热词', civilianWord: '猪队友', spyWord: '神对手' },
+            { category: '网络热词', civilianWord: '甩锅', spyWord: '背锅' },
+            { category: '网络热词', civilianWord: '种草', spyWord: '拔草' },
+            { category: '网络热词', civilianWord: '安利', spyWord: '推荐' },
+            { category: '网络热词', civilianWord: '踩雷', spyWord: '避雷' },
+            { category: '网络热词', civilianWord: '剁手', spyWord: '吃土' },
+            { category: '网络热词', civilianWord: '泰酷辣', spyWord: '泰帅了' },
+            { category: '网络热词', civilianWord: '尊嘟假嘟', spyWord: '真的吗' },
+            { category: '网络热词', civilianWord: '无语子', spyWord: '牛哇子' },
+            { category: '网络热词', civilianWord: '离大谱', spyWord: '很正常' },
+            { category: '网络热词', civilianWord: '逆天', spyWord: '正常' },
+            { category: '网络热词', civilianWord: '逆袭', spyWord: '翻车' },
+            { category: '网络热词', civilianWord: '翻盘', spyWord: '认输' },
+            { category: '网络热词', civilianWord: '开挂', spyWord: '正常操作' },
+            { category: '网络热词', civilianWord: '上分', spyWord: '掉分' },
+            { category: '网络热词', civilianWord: '五杀', spyWord: '超神' },
+            { category: '网络热词', civilianWord: 'MVP', spyWord: '躺赢' },
+            { category: '网络热词', civilianWord: '带飞', spyWord: '被带' },
+            { category: '网络热词', civilianWord: '开黑', spyWord: '单排' },
+            { category: '网络热词', civilianWord: '大神', spyWord: '菜鸟' },
+            { category: '网络热词', civilianWord: '新手', spyWord: '老手' },
+            { category: '网络热词', civilianWord: '氪金', spyWord: '白嫖' },
+            { category: '网络热词', civilianWord: '肝帝', spyWord: '氪金大佬' },
+            { category: '网络热词', civilianWord: '欧皇', spyWord: '非酋' },
+            { category: '网络热词', civilianWord: '出货', spyWord: '沉船' },
+            { category: '网络热词', civilianWord: '限定', spyWord: '普通' },
+            { category: '网络热词', civilianWord: '复刻', spyWord: '限定' },
+            { category: '网络热词', civilianWord: '首发', spyWord: '现货' },
+            { category: '网络热词', civilianWord: '下单', spyWord: '退款' },
+            { category: '网络热词', civilianWord: '发货', spyWord: '收货' },
+            { category: '网络热词', civilianWord: '好评', spyWord: '差评' },
+            { category: '网络热词', civilianWord: '充值', spyWord: '提现' },
+            { category: '网络热词', civilianWord: '转账', spyWord: '收款' },
+            { category: '网络热词', civilianWord: '红包', spyWord: '转账' },
+            { category: '网络热词', civilianWord: '满减', spyWord: '凑单' },
+            { category: '网络热词', civilianWord: '优惠券', spyWord: '满减券' },
+            { category: '网络热词', civilianWord: '积分', spyWord: '金币' },
+            { category: '网络热词', civilianWord: '余额', spyWord: '欠款' },
+            { category: '网络热词', civilianWord: '赚钱', spyWord: '花钱' },
+            { category: '网络热词', civilianWord: '省钱', spyWord: '烧钱' },
+            { category: '网络热词', civilianWord: '投资', spyWord: '回报' },
+            { category: '网络热词', civilianWord: '盈利', spyWord: '亏损' },
+            { category: '网络热词', civilianWord: '涨停', spyWord: '跌停' },
+            { category: '网络热词', civilianWord: '牛市', spyWord: '熊市' },
+            { category: '网络热词', civilianWord: '建仓', spyWord: '清仓' },
+            { category: '网络热词', civilianWord: '满仓', spyWord: '空仓' },
+            { category: '网络热词', civilianWord: '做多', spyWord: '做空' },
+            { category: '网络热词', civilianWord: '长线', spyWord: '短线' },
+            { category: '网络热词', civilianWord: '定投', spyWord: '梭哈' },
+            { category: '网络热词', civilianWord: '抄底', spyWord: '逃顶' },
+            { category: '网络热词', civilianWord: '套牢', spyWord: '解套' },
+            { category: '网络热词', civilianWord: '止损', spyWord: '止盈' },
+            { category: '网络热词', civilianWord: '翻倍', spyWord: '腰斩' },
+            { category: '网络热词', civilianWord: '暴富', spyWord: '破产' },
+            { category: '网络热词', civilianWord: '暴雷', spyWord: '安全' },
+            { category: '网络热词', civilianWord: '上岸', spyWord: '下海' },
+            { category: '网络热词', civilianWord: '焦虑', spyWord: '淡定' },
+            { category: '网络热词', civilianWord: '奋斗', spyWord: '摆烂' },
+            { category: '网络热词', civilianWord: '自律', spyWord: '躺平' },
+            { category: '网络热词', civilianWord: '加油', spyWord: '躺平' },
+            { category: '网络热词', civilianWord: '冲', spyWord: '苟' },
+            { category: '网络热词', civilianWord: '稳住', spyWord: '翻车' },
+            { category: '网络热词', civilianWord: '翻车', spyWord: '稳了' },
+            { category: '网络热词', civilianWord: '神仙', spyWord: '大佬' },
+            { category: '网络热词', civilianWord: '小白', spyWord: '老鸟' },
+            { category: '网络热词', civilianWord: '前辈', spyWord: '后辈' },
+            { category: '网络热词', civilianWord: '闺蜜', spyWord: '基友' },
+            { category: '网络热词', civilianWord: '兄弟', spyWord: '姐妹' },
+            { category: '网络热词', civilianWord: '损友', spyWord: '益友' },
+            { category: '网络热词', civilianWord: '良师', spyWord: '贵人' },
+            { category: '网络热词', civilianWord: '君子', spyWord: '小人' },
+            { category: '网络热词', civilianWord: '绅士', spyWord: '流氓' },
+            { category: '网络热词', civilianWord: '暖男', spyWord: '直男' },
+            { category: '网络热词', civilianWord: '绿茶', spyWord: '白莲花' },
+            { category: '网络热词', civilianWord: '傻白甜', spyWord: '高情商' },
+            { category: '网络热词', civilianWord: '高智商', spyWord: '低智商' },
+            { category: '网络热词', civilianWord: '天才', spyWord: '笨蛋' },
+            { category: '网络热词', civilianWord: '聪明', spyWord: '愚蠢' },
+            { category: '网络热词', civilianWord: '机智', spyWord: '呆萌' },
+            { category: '网络热词', civilianWord: '精明', spyWord: '蠢萌' },
+            { category: '网络热词', civilianWord: '可爱', spyWord: '成熟' },
+            { category: '网络热词', civilianWord: '幼稚', spyWord: '老成' },
+            { category: '网络热词', civilianWord: '稳重', spyWord: '轻浮' },
+            { category: '网络热词', civilianWord: '活泼', spyWord: '内向' },
+            { category: '网络热词', civilianWord: '社恐', spyWord: '社牛' },
+            { category: '网络热词', civilianWord: '开朗', spyWord: '沉默' },
+            { category: '网络热词', civilianWord: '话痨', spyWord: '安静' },
+            { category: '网络热词', civilianWord: '淡定', spyWord: '慌张' },
+            { category: '网络热词', civilianWord: '冷静', spyWord: '激动' },
+            { category: '网络热词', civilianWord: '放松', spyWord: '焦虑' },
+            { category: '网络热词', civilianWord: '开心', spyWord: '难过' },
+            { category: '网络热词', civilianWord: '快乐', spyWord: '伤心' },
+            { category: '网络热词', civilianWord: '幸福', spyWord: '痛苦' },
+            { category: '网络热词', civilianWord: '幸运', spyWord: '倒霉' },
+            { category: '网络热词', civilianWord: '顺利', spyWord: '困难' },
+            { category: '网络热词', civilianWord: '简单', spyWord: '复杂' },
+            { category: '网络热词', civilianWord: '方便', spyWord: '麻烦' },
+            { category: '网络热词', civilianWord: '快捷', spyWord: '缓慢' },
+            { category: '网络热词', civilianWord: '高效', spyWord: '低效' },
+            { category: '网络热词', civilianWord: 'emo', spyWord: '破防' },
+            { category: '网络热词', civilianWord: '芭比Q', spyWord: '完了' },
+            { category: '网络热词', civilianWord: '绝绝子', spyWord: '太棒了' },
+            { category: '网络热词', civilianWord: '服了', spyWord: '醉了' },
+            { category: '网络热词', civilianWord: '无语', spyWord: '牛气' },
             { category: '社交媒体', civilianWord: '抖音', spyWord: '快手' },
             { category: '社交媒体', civilianWord: '微博', spyWord: '小红书' },
+            { category: '社交媒体', civilianWord: '微信', spyWord: 'QQ' },
+            { category: '社交媒体', civilianWord: '知乎', spyWord: '豆瓣' },
+            { category: '社交媒体', civilianWord: 'B站', spyWord: '油管' },
+            { category: '社交媒体', civilianWord: '朋友圈', spyWord: '微博' },
+            { category: '社交媒体', civilianWord: '公众号', spyWord: '视频号' },
+            { category: '社交媒体', civilianWord: 'ins', spyWord: '小红书' },
+            { category: '社交媒体', civilianWord: 'Twitter', spyWord: '微博' },
+            { category: '社交媒体', civilianWord: 'Facebook', spyWord: '微信' },
+            { category: '社交媒体', civilianWord: '钉钉', spyWord: '企业微信' },
+            { category: '社交媒体', civilianWord: 'soul', spyWord: '探探' },
+            { category: '社交媒体', civilianWord: '即刻', spyWord: '豆瓣' },
+            { category: '社交媒体', civilianWord: '虎扑', spyWord: '懂球帝' },
+            { category: '社交媒体', civilianWord: '大众点评', spyWord: '小红书' },
+            { category: '社交媒体', civilianWord: '美团', spyWord: '饿了么' },
+            { category: '社交媒体', civilianWord: '直播', spyWord: '短视频' },
+            { category: '社交媒体', civilianWord: '图文', spyWord: '视频' },
+            { category: '社交媒体', civilianWord: '播客', spyWord: '喜马拉雅' },
+            { category: '社交媒体', civilianWord: '荔枝', spyWord: '蜻蜓fm' },
             { category: '科技产品', civilianWord: 'iPhone', spyWord: '华为' },
             { category: '科技产品', civilianWord: 'MacBook', spyWord: 'iPad' },
+            { category: '科技产品', civilianWord: '小米', spyWord: '华为' },
+            { category: '科技产品', civilianWord: 'OPPO', spyWord: 'vivo' },
+            { category: '科技产品', civilianWord: '三星', spyWord: '苹果' },
+            { category: '科技产品', civilianWord: 'Mac', spyWord: 'Windows' },
+            { category: '科技产品', civilianWord: 'iOS', spyWord: 'Android' },
+            { category: '科技产品', civilianWord: 'AirPods', spyWord: 'Galaxy Buds' },
+            { category: '科技产品', civilianWord: 'Apple Watch', spyWord: '小米手环' },
+            { category: '科技产品', civilianWord: 'Switch', spyWord: 'PlayStation' },
+            { category: '科技产品', civilianWord: 'Kindle', spyWord: '掌阅' },
+            { category: '科技产品', civilianWord: '机械键盘', spyWord: '薄膜键盘' },
+            { category: '科技产品', civilianWord: 'SSD硬盘', spyWord: '机械硬盘' },
+            { category: '科技产品', civilianWord: '降噪耳机', spyWord: '普通耳机' },
+            { category: '科技产品', civilianWord: '无人机', spyWord: '航模' },
+            { category: '科技产品', civilianWord: 'Switch', spyWord: 'Xbox' },
             { category: '美食', civilianWord: '奶茶', spyWord: '咖啡' },
             { category: '美食', civilianWord: '火锅', spyWord: '麻辣烫' },
             { category: '美食', civilianWord: '烧烤', spyWord: '烤肉' },
+            { category: '美食', civilianWord: '川菜', spyWord: '湘菜' },
+            { category: '美食', civilianWord: '粤菜', spyWord: '浙菜' },
+            { category: '美食', civilianWord: '东北菜', spyWord: '川菜' },
+            { category: '美食', civilianWord: '北京烤鸭', spyWord: '南京盐水鸭' },
+            { category: '美食', civilianWord: '兰州拉面', spyWord: '重庆小面' },
+            { category: '美食', civilianWord: '沙县小吃', spyWord: '黄焖鸡' },
+            { category: '美食', civilianWord: '煎饼果子', spyWord: '手抓饼' },
+            { category: '美食', civilianWord: '臭豆腐', spyWord: '螺蛳粉' },
+            { category: '美食', civilianWord: '小龙虾', spyWord: '大闸蟹' },
+            { category: '美食', civilianWord: '烤鱼', spyWord: '酸菜鱼' },
+            { category: '美食', civilianWord: '红烧肉', spyWord: '糖醋排骨' },
+            { category: '美食', civilianWord: '宫保鸡丁', spyWord: '鱼香肉丝' },
+            { category: '美食', civilianWord: '麻婆豆腐', spyWord: '家常豆腐' },
+            { category: '美食', civilianWord: '可乐鸡翅', spyWord: '红烧鸡翅' },
+            { category: '美食', civilianWord: '炸鸡', spyWord: '烤鸡' },
+            { category: '美食', civilianWord: '汉堡', spyWord: '三明治' },
+            { category: '美食', civilianWord: '披萨', spyWord: '意大利面' },
+            { category: '美食', civilianWord: '寿司', spyWord: '刺身' },
+            { category: '美食', civilianWord: '拉面', spyWord: '乌冬面' },
+            { category: '美食', civilianWord: '泡面', spyWord: '螺蛳粉' },
+            { category: '美食', civilianWord: '酸辣粉', spyWord: '桂林米粉' },
+            { category: '美食', civilianWord: '热干面', spyWord: '担担面' },
+            { category: '美食', civilianWord: '刀削面', spyWord: '拉面' },
+            { category: '美食', civilianWord: '油泼面', spyWord: 'biangbiang面' },
+            { category: '美食', civilianWord: '炸酱面', spyWord: '打卤面' },
+            { category: '美食', civilianWord: '米线', spyWord: '米粉' },
+            { category: '美食', civilianWord: '肠粉', spyWord: '卷粉' },
+            { category: '美食', civilianWord: '凉皮', spyWord: '凉面' },
+            { category: '美食', civilianWord: '冷面', spyWord: '朝鲜冷面' },
+            { category: '美食', civilianWord: '煲仔饭', spyWord: '石锅拌饭' },
+            { category: '美食', civilianWord: '炒饭', spyWord: '盖浇饭' },
+            { category: '美食', civilianWord: '蛋炒饭', spyWord: '扬州炒饭' },
+            { category: '美食', civilianWord: '米饭', spyWord: '面条' },
+            { category: '美食', civilianWord: '馒头', spyWord: '花卷' },
+            { category: '美食', civilianWord: '包子', spyWord: '饺子' },
+            { category: '美食', civilianWord: '馄饨', spyWord: '云吞' },
+            { category: '美食', civilianWord: '抄手', spyWord: '红油抄手' },
+            { category: '美食', civilianWord: '蒸饺', spyWord: '水饺' },
+            { category: '美食', civilianWord: '生煎', spyWord: '小笼包' },
+            { category: '美食', civilianWord: '汤包', spyWord: '灌汤包' },
+            { category: '美食', civilianWord: '大饼', spyWord: '烧饼' },
+            { category: '美食', civilianWord: '油条', spyWord: '麻花' },
+            { category: '美食', civilianWord: '豆浆', spyWord: '豆腐脑' },
+            { category: '美食', civilianWord: '粥', spyWord: '米饭' },
+            { category: '美食', civilianWord: '汤圆', spyWord: '元宵' },
+            { category: '美食', civilianWord: '粽子', spyWord: '糯米鸡' },
+            { category: '美食', civilianWord: '月饼', spyWord: '蛋黄酥' },
+            { category: '美食', civilianWord: '绿豆糕', spyWord: '红豆糕' },
+            { category: '美食', civilianWord: '凉糕', spyWord: '冰粉' },
+            { category: '美食', civilianWord: '龟苓膏', spyWord: '烧仙草' },
+            { category: '美食', civilianWord: '芋圆', spyWord: '珍珠奶茶' },
+            { category: '美食', civilianWord: '西米露', spyWord: '椰汁西米露' },
+            { category: '美食', civilianWord: '布丁', spyWord: '果冻' },
+            { category: '美食', civilianWord: '蛋糕', spyWord: '面包' },
+            { category: '美食', civilianWord: '奶油蛋糕', spyWord: '芝士蛋糕' },
+            { category: '美食', civilianWord: '慕斯蛋糕', spyWord: '戚风蛋糕' },
+            { category: '美食', civilianWord: '提拉米苏', spyWord: '芝士蛋糕' },
+            { category: '美食', civilianWord: '拿破仑蛋糕', spyWord: '千层蛋糕' },
+            { category: '美食', civilianWord: '班戟', spyWord: '可丽饼' },
+            { category: '美食', civilianWord: '吐司', spyWord: '法棍' },
+            { category: '美食', civilianWord: '牛角面包', spyWord: '可颂' },
+            { category: '美食', civilianWord: '三明治', spyWord: '汉堡' },
+            { category: '美食', civilianWord: '热狗', spyWord: '香肠' },
+            { category: '美食', civilianWord: '焗饭', spyWord: '披萨' },
+            { category: '美食', civilianWord: '意面', spyWord: '日式拉面' },
+            { category: '美食', civilianWord: '沙拉', spyWord: '凉菜' },
+            { category: '美食', civilianWord: '水果沙拉', spyWord: '蔬菜沙拉' },
             { category: '娱乐', civilianWord: '电影', spyWord: '电视剧' },
             { category: '娱乐', civilianWord: '唱歌', spyWord: '跳舞' },
+            { category: '娱乐', civilianWord: '追剧', spyWord: '刷抖音' },
+            { category: '娱乐', civilianWord: '综艺', spyWord: '选秀' },
+            { category: '娱乐', civilianWord: '演唱会', spyWord: '音乐节' },
+            { category: '娱乐', civilianWord: '话剧', spyWord: '歌剧' },
+            { category: '娱乐', civilianWord: '相声', spyWord: '小品' },
+            { category: '娱乐', civilianWord: '脱口秀', spyWord: '相声' },
+            { category: '娱乐', civilianWord: '动漫', spyWord: '漫画' },
+            { category: '娱乐', civilianWord: '追番', spyWord: '追剧' },
+            { category: '娱乐', civilianWord: '打游戏', spyWord: '刷视频' },
+            { category: '娱乐', civilianWord: '主机游戏', spyWord: '手游' },
+            { category: '娱乐', civilianWord: '密室逃脱', spyWord: '剧本杀' },
+            { category: '娱乐', civilianWord: '狼人杀', spyWord: '三国杀' },
+            { category: '娱乐', civilianWord: '扑克牌', spyWord: '麻将' },
+            { category: '娱乐', civilianWord: 'K歌', spyWord: '听歌' },
+            { category: '娱乐', civilianWord: '短视频', spyWord: '直播' },
+            { category: '娱乐', civilianWord: '追星', spyWord: '电竞' },
+            { category: '娱乐', civilianWord: '演唱会', spyWord: '见面会' },
+            { category: '娱乐', civilianWord: '烂片', spyWord: '神作' },
+            { category: '娱乐', civilianWord: '剧透', spyWord: '彩蛋' },
+            { category: '娱乐', civilianWord: '弹幕', spyWord: '评论区' },
+            { category: '娱乐', civilianWord: '刷剧', spyWord: '追番' },
+            { category: '娱乐', civilianWord: '嗑CP', spyWord: '唯粉' },
+            { category: '娱乐', civilianWord: '追星族', spyWord: '电竞粉' },
+            { category: '娱乐', civilianWord: '演唱会', spyWord: 'livehouse' },
+            { category: '娱乐', civilianWord: '泡吧', spyWord: '蹦迪' },
+            { category: '娱乐', civilianWord: '喝酒', spyWord: 'KTV' },
+            { category: '娱乐', civilianWord: '桌游', spyWord: '密室' },
+            { category: '娱乐', civilianWord: '剧本杀', spyWord: '沉浸式剧场' },
+            { category: '娱乐', civilianWord: '扑克', spyWord: '斗地主' },
+            { category: '娱乐', civilianWord: '麻将', spyWord: '扑克' },
+            { category: '娱乐', civilianWord: '王者荣耀', spyWord: '英雄联盟' },
+            { category: '娱乐', civilianWord: '吃鸡', spyWord: '王者荣耀' },
+            { category: '娱乐', civilianWord: '原神', spyWord: '塞尔达' },
+            { category: '娱乐', civilianWord: '蛋仔派对', spyWord: '糖豆人' },
+            { category: '娱乐', civilianWord: '我的世界', spyWord: '迷你世界' },
+            { category: '娱乐', civilianWord: 'LOL', spyWord: 'DOTA2' },
+            { category: '娱乐', civilianWord: 'CSGO', spyWord: 'Valorant' },
+            { category: '娱乐', civilianWord: '绝地求生', spyWord: '和平精英' },
+            { category: '娱乐', civilianWord: 'steam', spyWord: 'Epic' },
+            { category: '娱乐', civilianWord: '主机', spyWord: 'PC' },
+            { category: '娱乐', civilianWord: 'Switch', spyWord: 'PS5' },
+            { category: '娱乐', civilianWord: '追剧', spyWord: '追综艺' },
+            { category: '娱乐', civilianWord: '国产剧', spyWord: '美剧' },
+            { category: '娱乐', civilianWord: '韩剧', spyWord: '日剧' },
+            { category: '娱乐', civilianWord: '英剧', spyWord: '美剧' },
+            { category: '娱乐', civilianWord: '动画片', spyWord: '动漫' },
+            { category: '娱乐', civilianWord: '科幻片', spyWord: '动作片' },
+            { category: '娱乐', civilianWord: '恐怖片', spyWord: '惊悚片' },
+            { category: '娱乐', civilianWord: '喜剧片', spyWord: '剧情片' },
+            { category: '娱乐', civilianWord: '爱情片', spyWord: '文艺片' },
+            { category: '娱乐', civilianWord: 'imax', spyWord: '普通厅' },
+            { category: '娱乐', civilianWord: 'vip厅', spyWord: '普通厅' },
+            { category: '娱乐', civilianWord: '电影票', spyWord: '优惠券' },
+            { category: '娱乐', civilianWord: '爆米花', spyWord: '可乐' },
+            { category: '娱乐', civilianWord: '翻唱', spyWord: '原唱' },
+            { category: '娱乐', civilianWord: '改编', spyWord: '原创' },
+            { category: '娱乐', civilianWord: '单曲', spyWord: '专辑' },
+            { category: '娱乐', civilianWord: 'EP', spyWord: '专辑' },
+            { category: '娱乐', civilianWord: '黑胶唱片', spyWord: 'CD' },
+            { category: '娱乐', civilianWord: '网易云', spyWord: 'QQ音乐' },
+            { category: '娱乐', civilianWord: '会员', spyWord: '免费' },
+            { category: '娱乐', civilianWord: '无损音质', spyWord: '标准音质' },
+            { category: '娱乐', civilianWord: '歌单', spyWord: '专辑' },
+            { category: '娱乐', civilianWord: '私人FM', spyWord: '每日推荐' },
+            { category: '娱乐', civilianWord: '周杰伦', spyWord: '陈奕迅' },
+            { category: '娱乐', civilianWord: '五月天', spyWord: '苏打绿' },
+            { category: '娱乐', civilianWord: 'Taylor', spyWord: 'Adele' },
+            { category: '娱乐', civilianWord: 'BLACKPINK', spyWord: 'BTS' },
+            { category: '娱乐', civilianWord: '内娱', spyWord: '韩娱' },
+            { category: '娱乐', civilianWord: '顶流', spyWord: '糊咖' },
+            { category: '娱乐', civilianWord: '小糊豆', spyWord: '大明星' },
+            { category: '娱乐', civilianWord: '练习生', spyWord: '出道' },
+            { category: '娱乐', civilianWord: '选秀', spyWord: '综艺' },
+            { category: '娱乐', civilianWord: '偶像', spyWord: '演员' },
+            { category: '娱乐', civilianWord: '歌手', spyWord: 'rapper' },
+            { category: '娱乐', civilianWord: '导演', spyWord: '编剧' },
+            { category: '娱乐', civilianWord: '慢综艺', spyWord: '快综艺' },
+            { category: '娱乐', civilianWord: '脱口秀', spyWord: '吐槽大会' },
+            { category: '娱乐', civilianWord: '德云社', spyWord: '笑果文化' },
+            { category: '娱乐', civilianWord: '春晚', spyWord: '跨年晚会' },
+            { category: '娱乐', civilianWord: '颁奖典礼', spyWord: '红毯' },
+            { category: '娱乐', civilianWord: '奥斯卡', spyWord: '金球奖' },
+            { category: '娱乐', civilianWord: '戛纳', spyWord: '威尼斯' },
+            { category: '娱乐', civilianWord: '格莱美', spyWord: 'MTV' },
+            { category: '娱乐', civilianWord: '漫展', spyWord: 'CJ' },
+            { category: '娱乐', civilianWord: 'BW', spyWord: 'CJ' },
+            { category: '娱乐', civilianWord: '音乐节', spyWord: 'livehouse' },
+            { category: '娱乐', civilianWord: '迷笛', spyWord: '草莓' },
+            { category: '娱乐', civilianWord: '握手会', spyWord: '签售会' },
+            { category: '娱乐', civilianWord: '应援', spyWord: '控评' },
+            { category: '娱乐', civilianWord: '打榜', spyWord: '做数据' },
+            { category: '娱乐', civilianWord: '超话', spyWord: '贴吧' },
+            { category: '娱乐', civilianWord: '饭圈', spyWord: '电竞圈' },
+            { category: '娱乐', civilianWord: '唯粉', spyWord: '团粉' },
+            { category: '娱乐', civilianWord: 'CP粉', spyWord: '唯粉' },
+            { category: '娱乐', civilianWord: '路人粉', spyWord: '死忠粉' },
+            { category: '娱乐', civilianWord: '脱粉', spyWord: '回踩' },
+            { category: '娱乐', civilianWord: '粉转黑', spyWord: '路转粉' },
+            { category: '娱乐', civilianWord: '黑粉', spyWord: '真爱粉' },
+            { category: '娱乐', civilianWord: '热搜', spyWord: '超话' },
+            { category: '娱乐', civilianWord: '头条', spyWord: '抖音' },
+            { category: '娱乐', civilianWord: 'Netflix', spyWord: '爱奇艺' },
+            { category: '娱乐', civilianWord: 'Disney+', spyWord: 'Netflix' },
+            { category: '娱乐', civilianWord: '腾讯视频', spyWord: '爱奇艺' },
+            { category: '娱乐', civilianWord: '优酷', spyWord: '腾讯视频' },
+            { category: '娱乐', civilianWord: 'B站', spyWord: '优酷' },
+            { category: '娱乐', civilianWord: '会员', spyWord: '超前点播' },
+            { category: '娱乐', civilianWord: '投屏', spyWord: '弹幕' },
+            { category: '娱乐', civilianWord: '倍速', spyWord: '原速' },
+            { category: '娱乐', civilianWord: '追剧', spyWord: '养剧' },
+            { category: '娱乐', civilianWord: '剧透', spyWord: '安利' },
+            { category: '娱乐', civilianWord: '二刷', spyWord: '首刷' },
+            { category: '娱乐', civilianWord: '电视剧', spyWord: '网剧' },
+            { category: '娱乐', civilianWord: '台剧', spyWord: '陆剧' },
+            { category: '娱乐', civilianWord: '港剧', spyWord: '台剧' },
+            { category: '娱乐', civilianWord: '泰剧', spyWord: '韩剧' },
+            { category: '娱乐', civilianWord: '日剧', spyWord: '韩剧' },
+            { category: '娱乐', civilianWord: '美剧', spyWord: '英剧' },
+            { category: '娱乐', civilianWord: '新剧', spyWord: '老剧' },
+            { category: '娱乐', civilianWord: '爆款', spyWord: '扑街' },
+            { category: '娱乐', civilianWord: '口碑', spyWord: '热度' },
+            { category: '娱乐', civilianWord: '烂片', spyWord: '神作' },
+            { category: '娱乐', civilianWord: '神剧', spyWord: '烂剧' },
+            { category: '娱乐', civilianWord: '下饭剧', spyWord: '烧脑剧' },
+            { category: '娱乐', civilianWord: '爽剧', spyWord: '虐剧' },
+            { category: '娱乐', civilianWord: '甜剧', spyWord: '虐剧' },
+            { category: '娱乐', civilianWord: 'BE', spyWord: 'HE' },
+            { category: '娱乐', civilianWord: '虐恋', spyWord: '甜宠' },
+            { category: '娱乐', civilianWord: '宫斗剧', spyWord: '宅斗剧' },
+            { category: '娱乐', civilianWord: '仙侠剧', spyWord: '武侠剧' },
+            { category: '娱乐', civilianWord: '古装剧', spyWord: '现代剧' },
+            { category: '娱乐', civilianWord: '悬疑剧', spyWord: '破案剧' },
+            { category: '娱乐', civilianWord: '年代剧', spyWord: '现代剧' },
+            { category: '娱乐', civilianWord: '职场剧', spyWord: '都市剧' },
+            { category: '娱乐', civilianWord: '校园剧', spyWord: '职场剧' },
+            { category: '娱乐', civilianWord: '家庭剧', spyWord: '都市剧' },
+            { category: '娱乐', civilianWord: '医疗剧', spyWord: '律政剧' },
+            { category: '娱乐', civilianWord: '商战剧', spyWord: '职场剧' },
+            { category: '娱乐', civilianWord: '涉案剧', spyWord: '破案剧' },
+            { category: '娱乐', civilianWord: '科幻剧', spyWord: '玄幻剧' },
+            { category: '娱乐', civilianWord: '奇幻剧', spyWord: '玄幻剧' },
+            { category: '娱乐', civilianWord: '漫改剧', spyWord: '小说改编' },
+            { category: '娱乐', civilianWord: 'IP剧', spyWord: '原创剧' },
+            { category: '娱乐', civilianWord: '续集', spyWord: '前传' },
+            { category: '娱乐', civilianWord: '番外', spyWord: '正片' },
+            { category: '娱乐', civilianWord: '重启', spyWord: '续作' },
+            { category: '娱乐', civilianWord: '翻拍', spyWord: '原创' },
+            { category: '娱乐', civilianWord: '衍生剧', spyWord: '母剧' },
+            { category: '娱乐', civilianWord: '特别篇', spyWord: '正片' },
+            { category: '娱乐', civilianWord: '短剧', spyWord: '长剧' },
+            { category: '娱乐', civilianWord: '互动剧', spyWord: '传统剧' },
+            { category: '娱乐', civilianWord: '季播', spyWord: '周播' },
+            { category: '娱乐', civilianWord: '完结', spyWord: '连载' },
+            { category: '娱乐', civilianWord: '加更', spyWord: '正常更新' },
+            { category: '娱乐', civilianWord: '超前点播', spyWord: '正常更新' },
+            { category: '娱乐', civilianWord: '熬夜追', spyWord: '养剧' },
+            { category: '娱乐', civilianWord: '补番', spyWord: '追番' },
+            { category: '娱乐', civilianWord: '弃番', spyWord: '追完' },
+            { category: '娱乐', civilianWord: '倍速看', spyWord: '原速看' },
+            { category: '娱乐', civilianWord: '看cut', spyWord: '看全剧' },
+            { category: '娱乐', civilianWord: 'CP向', spyWord: '个人向' },
+            { category: '娱乐', civilianWord: '磕CP', spyWord: '唯粉' },
+            { category: '娱乐', civilianWord: '角色粉', spyWord: '演员粉' },
+            { category: '娱乐', civilianWord: '颜粉', spyWord: '演技粉' },
+            { category: '娱乐', civilianWord: '事业粉', spyWord: '恋爱脑' },
+            { category: '娱乐', civilianWord: '路人盘', spyWord: '粉丝盘' },
+            { category: '娱乐', civilianWord: '死忠粉', spyWord: '路人粉' },
+            { category: '娱乐', civilianWord: '真爱粉', spyWord: '黑粉' },
+            { category: '娱乐', civilianWord: '白嫖粉', spyWord: '氪金粉' },
+            { category: '娱乐', civilianWord: '控评', spyWord: '反黑' },
+            { category: '娱乐', civilianWord: '后援会', spyWord: '官方' },
+            { category: '娱乐', civilianWord: '站子', spyWord: '官方' },
+            { category: '娱乐', civilianWord: '站姐', spyWord: '站哥' },
+            { category: '娱乐', civilianWord: '私生', spyWord: '正常粉丝' },
+            { category: '娱乐', civilianWord: '代购', spyWord: '直邮' },
+            { category: '娱乐', civilianWord: '周边', spyWord: '官方周边' },
+            { category: '娱乐', civilianWord: '同人文', spyWord: '官方文' },
+            { category: '娱乐', civilianWord: '二创', spyWord: '官方' },
+            { category: '娱乐', civilianWord: '男频', spyWord: '女频' },
+            { category: '娱乐', civilianWord: '言情', spyWord: '耽美' },
+            { category: '娱乐', civilianWord: '百合', spyWord: '耽美' },
+            { category: '娱乐', civilianWord: '无CP', spyWord: '有CP' },
+            { category: '娱乐', civilianWord: '清水文', spyWord: '肉文' },
+            { category: '娱乐', civilianWord: '悬疑文', spyWord: '甜文' },
+            { category: '娱乐', civilianWord: '虐文', spyWord: '甜文' },
+            { category: '娱乐', civilianWord: '爽文', spyWord: '虐文' },
+            { category: '娱乐', civilianWord: '快穿文', spyWord: '无限流' },
+            { category: '娱乐', civilianWord: '系统文', spyWord: '金手指' },
+            { category: '娱乐', civilianWord: '重生文', spyWord: '穿越文' },
+            { category: '娱乐', civilianWord: '穿书文', spyWord: '原创文' },
+            { category: '娱乐', civilianWord: '种田文', spyWord: '宫斗文' },
+            { category: '娱乐', civilianWord: '总裁文', spyWord: '校园文' },
+            { category: '娱乐', civilianWord: '电竞文', spyWord: '娱乐圈文' },
+            { category: '娱乐', civilianWord: '姐弟恋', spyWord: '大叔文' },
+            { category: '娱乐', civilianWord: '年下', spyWord: '年上' },
+            { category: '娱乐', civilianWord: '先婚后爱', spyWord: '暗恋文' },
+            { category: '娱乐', civilianWord: '双向奔赴', spyWord: '单箭头' },
+            { category: '娱乐', civilianWord: 'HE', spyWord: 'BE' },
+            { category: '娱乐', civilianWord: '追妻火葬场', spyWord: '破镜重圆' },
+            { category: '娱乐', civilianWord: '带球跑', spyWord: '青梅竹马' },
+            { category: '娱乐', civilianWord: '久别重逢', spyWord: '日久生情' },
+            { category: '娱乐', civilianWord: '一见钟情', spyWord: '日久生情' },
+            { category: '娱乐', civilianWord: '双向暗恋', spyWord: '明恋' },
+            { category: '娱乐', civilianWord: '暗恋', spyWord: '明恋' },
+            { category: '娱乐', civilianWord: '暗恋成真', spyWord: '明恋' },
+            { category: '娱乐', civilianWord: '先虐后甜', spyWord: '先甜后虐' },
+            { category: '娱乐', civilianWord: '虐恋情深', spyWord: '甜宠' },
+            { category: '娱乐', civilianWord: '小甜饼', spyWord: '虐文' },
+            { category: '娱乐', civilianWord: '玻璃渣里找糖', spyWord: '甜文' },
+            { category: '娱乐', civilianWord: '狗血文', spyWord: '清流文' },
+            { category: '娱乐', civilianWord: '真香', spyWord: '打脸' },
+            { category: '娱乐', civilianWord: '打脸', spyWord: '装逼' },
+            { category: '娱乐', civilianWord: '爽文', spyWord: '憋屈文' },
+            { category: '娱乐', civilianWord: '逆袭文', spyWord: '废柴文' },
+            { category: '娱乐', civilianWord: '废柴逆袭', spyWord: '天才流' },
+            { category: '娱乐', civilianWord: '玛丽苏', spyWord: '正常人' },
+            { category: '娱乐', civilianWord: '苏文', spyWord: '反苏文' },
+            { category: '娱乐', civilianWord: '反套路', spyWord: '套路文' },
+            { category: '娱乐', civilianWord: '无脑甜', spyWord: '烧脑虐' },
+            { category: '娱乐', civilianWord: '小白文', spyWord: '老白文' },
+            { category: '娱乐', civilianWord: '文笔好', spyWord: '文笔差' },
+            { category: '娱乐', civilianWord: '逻辑漏洞', spyWord: '逻辑自洽' },
+            { category: '娱乐', civilianWord: 'OOC', spyWord: '符合人设' },
+            { category: '娱乐', civilianWord: '崩人设', spyWord: '人设好' },
+            { category: '娱乐', civilianWord: '人物饱满', spyWord: '工具人' },
+            { category: '娱乐', civilianWord: '白莲花', spyWord: '黑莲花' },
+            { category: '娱乐', civilianWord: '圣母', spyWord: '腹黑' },
+            { category: '娱乐', civilianWord: '病娇', spyWord: '阳光' },
+            { category: '娱乐', civilianWord: '忠犬', spyWord: '狼狗' },
+            { category: '娱乐', civilianWord: '小狼狗', spyWord: '小奶狗' },
+            { category: '娱乐', civilianWord: '大叔', spyWord: '正太' },
+            { category: '娱乐', civilianWord: '傲娇', spyWord: '软萌' },
+            { category: '娱乐', civilianWord: '高冷', spyWord: '暖男' },
+            { category: '娱乐', civilianWord: '中央空调', spyWord: '专一' },
+            { category: '娱乐', civilianWord: '深情', spyWord: '薄情' },
+            { category: '娱乐', civilianWord: '双洁', spyWord: '非双洁' },
+            { category: '娱乐', civilianWord: '1v1', spyWord: 'NP' },
+            { category: '娱乐', civilianWord: '多男主', spyWord: '多女主' },
+            { category: '娱乐', civilianWord: '副CP', spyWord: '主线CP' },
+            { category: '娱乐', civilianWord: '官配', spyWord: '民配' },
+            { category: '娱乐', civilianWord: '拉郎', spyWord: '官配' },
+            { category: '娱乐', civilianWord: '逆CP', spyWord: '官配' },
+            { category: '娱乐', civilianWord: '拆CP', spyWord: '配CP' },
             { category: '日常', civilianWord: '公交', spyWord: '地铁' },
             { category: '日常', civilianWord: '牙刷', spyWord: '牙膏' },
+            { category: '日常', civilianWord: '毛巾', spyWord: '浴巾' },
+            { category: '日常', civilianWord: '洗发水', spyWord: '护发素' },
+            { category: '日常', civilianWord: '沐浴露', spyWord: '香皂' },
+            { category: '日常', civilianWord: '纸巾', spyWord: '湿巾' },
+            { category: '日常', civilianWord: '洗衣液', spyWord: '洗衣粉' },
+            { category: '日常', civilianWord: '洗洁精', spyWord: '小苏打' },
+            { category: '日常', civilianWord: '洗面奶', spyWord: '洁面乳' },
+            { category: '日常', civilianWord: '面霜', spyWord: '乳液' },
+            { category: '日常', civilianWord: '精华', spyWord: '原液' },
+            { category: '日常', civilianWord: '眼霜', spyWord: '眼膜' },
+            { category: '日常', civilianWord: '防晒', spyWord: '隔离' },
+            { category: '日常', civilianWord: '粉底', spyWord: '气垫' },
+            { category: '日常', civilianWord: '口红', spyWord: '唇膏' },
+            { category: '日常', civilianWord: '眉笔', spyWord: '染眉膏' },
+            { category: '日常', civilianWord: '眼影', spyWord: '腮红' },
+            { category: '日常', civilianWord: '香水', spyWord: '香氛' },
+            { category: '日常', civilianWord: '手表', spyWord: '手环' },
+            { category: '日常', civilianWord: '项链', spyWord: '手链' },
+            { category: '日常', civilianWord: '耳环', spyWord: '耳钉' },
+            { category: '日常', civilianWord: '戒指', spyWord: '戒指' },
+            { category: '日常', civilianWord: '背包', spyWord: '挎包' },
+            { category: '日常', civilianWord: '钱包', spyWord: '卡包' },
+            { category: '日常', civilianWord: '雨伞', spyWord: '太阳伞' },
+            { category: '日常', civilianWord: '帽子', spyWord: '围巾' },
+            { category: '日常', civilianWord: '手套', spyWord: '袜子' },
+            { category: '日常', civilianWord: 'T恤', spyWord: '衬衫' },
+            { category: '日常', civilianWord: '牛仔裤', spyWord: '休闲裤' },
+            { category: '日常', civilianWord: '裙子', spyWord: '裤子' },
+            { category: '日常', civilianWord: '运动鞋', spyWord: '皮鞋' },
+            { category: '日常', civilianWord: '拖鞋', spyWord: '凉鞋' },
+            { category: '日常', civilianWord: '枕头', spyWord: '被子' },
+            { category: '日常', civilianWord: '床单', spyWord: '被套' },
+            { category: '日常', civilianWord: '窗帘', spyWord: '窗纱' },
+            { category: '日常', civilianWord: '沙发', spyWord: '椅子' },
+            { category: '日常', civilianWord: '茶几', spyWord: '餐桌' },
+            { category: '日常', civilianWord: '电视', spyWord: '投影' },
+            { category: '日常', civilianWord: '冰箱', spyWord: '冰柜' },
+            { category: '日常', civilianWord: '空调', spyWord: '风扇' },
+            { category: '日常', civilianWord: '洗衣机', spyWord: '烘干机' },
+            { category: '日常', civilianWord: '微波炉', spyWord: '烤箱' },
+            { category: '日常', civilianWord: '电饭煲', spyWord: '高压锅' },
+            { category: '日常', civilianWord: '榨汁机', spyWord: '破壁机' },
+            { category: '日常', civilianWord: '吹风机', spyWord: '直发器' },
+            { category: '日常', civilianWord: '剃须刀', spyWord: '电动牙刷' },
+            { category: '日常', civilianWord: '台灯', spyWord: '落地灯' },
+            { category: '日常', civilianWord: '水杯', spyWord: '保温杯' },
+            { category: '日常', civilianWord: '碗', spyWord: '盘子' },
+            { category: '日常', civilianWord: '筷子', spyWord: '勺子' },
+            { category: '日常', civilianWord: '刀叉', spyWord: '筷子' },
+            { category: '日常', civilianWord: '砧板', spyWord: '菜刀' },
+            { category: '日常', civilianWord: '炒锅', spyWord: '平底锅' },
+            { category: '日常', civilianWord: '高压锅', spyWord: '电压力锅' },
+            { category: '日常', civilianWord: '蒸锅', spyWord: '汤锅' },
+            { category: '日常', civilianWord: '漏勺', spyWord: '汤勺' },
+            { category: '日常', civilianWord: '保鲜膜', spyWord: '保鲜袋' },
+            { category: '日常', civilianWord: '垃圾桶', spyWord: '垃圾袋' },
+            { category: '日常', civilianWord: '抹布', spyWord: '拖把' },
+            { category: '日常', civilianWord: '扫帚', spyWord: '吸尘器' },
+            { category: '日常', civilianWord: '梯子', spyWord: '凳子' },
+            { category: '日常', civilianWord: '螺丝刀', spyWord: '锤子' },
+            { category: '日常', civilianWord: '胶带', spyWord: '胶水' },
+            { category: '日常', civilianWord: '电池', spyWord: '充电器' },
+            { category: '日常', civilianWord: 'U盘', spyWord: '移动硬盘' },
+            { category: '日常', civilianWord: '数据线', spyWord: '充电线' },
+            { category: '日常', civilianWord: '插座', spyWord: '排插' },
+            { category: '日常', civilianWord: '眼镜', spyWord: '墨镜' },
+            { category: '日常', civilianWord: '隐形眼镜', spyWord: '美瞳' },
+            { category: '日常', civilianWord: '创可贴', spyWord: '绷带' },
+            { category: '日常', civilianWord: '感冒药', spyWord: '退烧药' },
+            { category: '日常', civilianWord: '胃药', spyWord: '止泻药' },
+            { category: '日常', civilianWord: '维生素', spyWord: '钙片' },
+            { category: '日常', civilianWord: '面膜', spyWord: '眼膜' },
+            { category: '日常', civilianWord: '洗手液', spyWord: '免洗洗手液' },
+            { category: '日常', civilianWord: '驱蚊液', spyWord: '花露水' },
+            { category: '日常', civilianWord: '痱子粉', spyWord: '爽身粉' },
+            { category: '日常', civilianWord: '牙线', spyWord: '牙签' },
+            { category: '日常', civilianWord: '漱口水', spyWord: '口香糖' },
+            { category: '日常', civilianWord: '梳子', spyWord: '发卡' },
+            { category: '日常', civilianWord: '皮筋', spyWord: '发圈' },
+            { category: '日常', civilianWord: '指甲刀', spyWord: '剪刀' },
+            { category: '日常', civilianWord: '睫毛夹', spyWord: '假睫毛' },
+            { category: '日常', civilianWord: '卸妆油', spyWord: '卸妆水' },
+            { category: '日常', civilianWord: '棉签', spyWord: '棉球' },
+            { category: '日常', civilianWord: '化妆棉', spyWord: '洗脸巾' },
+            { category: '日常', civilianWord: '发蜡', spyWord: '发泥' },
+            { category: '日常', civilianWord: '发胶', spyWord: '定型喷雾' },
+            { category: '日常', civilianWord: '发膜', spyWord: '护发素' },
+            { category: '日常', civilianWord: '身体乳', spyWord: '护手霜' },
+            { category: '日常', civilianWord: '护手霜', spyWord: '身体乳' },
+            { category: '日常', civilianWord: '润唇膏', spyWord: '口红' },
+            { category: '日常', civilianWord: '防晒霜', spyWord: '防晒喷雾' },
+            { category: '日常', civilianWord: 'BB霜', spyWord: 'CC霜' },
+            { category: '日常', civilianWord: '遮瑕', spyWord: '粉底' },
+            { category: '日常', civilianWord: '散粉', spyWord: '定妆喷雾' },
+            { category: '日常', civilianWord: '高光', spyWord: '阴影' },
+            { category: '日常', civilianWord: '睫毛膏', spyWord: '眼线笔' },
+            { category: '日常', civilianWord: '眉粉', spyWord: '眉膏' },
+            { category: '日常', civilianWord: '染发剂', spyWord: '烫发剂' },
+            { category: '日常', civilianWord: '卷发棒', spyWord: '直板夹' },
+            { category: '日常', civilianWord: '蒸脸器', spyWord: '美容仪' },
+            { category: '日常', civilianWord: '筋膜枪', spyWord: '按摩仪' },
+            { category: '日常', civilianWord: '体脂秤', spyWord: '体重秤' },
+            { category: '日常', civilianWord: '温度计', spyWord: '湿度计' },
+            { category: '日常', civilianWord: '体重秤', spyWord: '体脂秤' },
+            { category: '日常', civilianWord: '跑步机', spyWord: '动感单车' },
+            { category: '日常', civilianWord: '瑜伽垫', spyWord: '瑜伽球' },
+            { category: '日常', civilianWord: '哑铃', spyWord: '杠铃' },
+            { category: '日常', civilianWord: '羽毛球', spyWord: '乒乓球' },
+            { category: '日常', civilianWord: '篮球', spyWord: '足球' },
+            { category: '日常', civilianWord: '网球', spyWord: '羽毛球' },
+            { category: '日常', civilianWord: '排球', spyWord: '篮球' },
+            { category: '日常', civilianWord: '棒球', spyWord: '垒球' },
+            { category: '日常', civilianWord: '高尔夫', spyWord: '保龄球' },
+            { category: '日常', civilianWord: '台球', spyWord: '斯诺克' },
+            { category: '日常', civilianWord: '飞镖', spyWord: '套圈' },
             { category: '动物', civilianWord: '猫', spyWord: '狗' },
-            { category: '动物', civilianWord: '老虎', spyWord: '狮子' }
+            { category: '动物', civilianWord: '老虎', spyWord: '狮子' },
+            { category: '动物', civilianWord: '熊猫', spyWord: '棕熊' },
+            { category: '动物', civilianWord: '兔子', spyWord: '仓鼠' },
+            { category: '动物', civilianWord: '龙猫', spyWord: '仓鼠' },
+            { category: '动物', civilianWord: '荷兰猪', spyWord: '兔子' },
+            { category: '动物', civilianWord: '金鱼', spyWord: '热带鱼' },
+            { category: '动物', civilianWord: '乌龟', spyWord: '蜥蜴' },
+            { category: '动物', civilianWord: '蛇', spyWord: '蜥蜴' },
+            { category: '动物', civilianWord: '青蛙', spyWord: '蟾蜍' },
+            { category: '动物', civilianWord: '螃蟹', spyWord: '龙虾' },
+            { category: '动物', civilianWord: '虾', spyWord: '蟹' },
+            { category: '动物', civilianWord: '章鱼', spyWord: '鱿鱼' },
+            { category: '动物', civilianWord: '海星', spyWord: '海胆' },
+            { category: '动物', civilianWord: '海豚', spyWord: '鲸鱼' },
+            { category: '动物', civilianWord: '鲨鱼', spyWord: '鲸鱼' },
+            { category: '动物', civilianWord: '海豹', spyWord: '海狮' },
+            { category: '动物', civilianWord: '企鹅', spyWord: '海鸥' },
+            { category: '动物', civilianWord: '孔雀', spyWord: '野鸡' },
+            { category: '动物', civilianWord: '鹦鹉', spyWord: '八哥' },
+            { category: '动物', civilianWord: '鸽子', spyWord: '麻雀' },
+            { category: '动物', civilianWord: '天鹅', spyWord: '白鹭' },
+            { category: '动物', civilianWord: '丹顶鹤', spyWord: '白鹭' },
+            { category: '动物', civilianWord: '鹰', spyWord: '隼' },
+            { category: '动物', civilianWord: '猫头鹰', spyWord: '老鹰' },
+            { category: '动物', civilianWord: '乌鸦', spyWord: '喜鹊' },
+            { category: '动物', civilianWord: '斑马', spyWord: '长颈鹿' },
+            { category: '动物', civilianWord: '大象', spyWord: '犀牛' },
+            { category: '动物', civilianWord: '河马', spyWord: '犀牛' },
+            { category: '动物', civilianWord: '猴子', spyWord: '猩猩' },
+            { category: '动物', civilianWord: '狒狒', spyWord: '猴子' },
+            { category: '动物', civilianWord: '考拉', spyWord: '树袋熊' },
+            { category: '动物', civilianWord: '袋鼠', spyWord: '鸸鹋' },
+            { category: '动物', civilianWord: '北极熊', spyWord: '企鹅' },
+            { category: '动物', civilianWord: '驯鹿', spyWord: '麋鹿' },
+            { category: '动物', civilianWord: '狼', spyWord: '狐狸' },
+            { category: '动物', civilianWord: '豹子', spyWord: '老虎' },
+            { category: '动物', civilianWord: '猎豹', spyWord: '花豹' },
+            { category: '动物', civilianWord: '马', spyWord: '驴' },
+            { category: '动物', civilianWord: '斑马', spyWord: '驴' },
+            { category: '动物', civilianWord: '牛', spyWord: '羊' },
+            { category: '动物', civilianWord: '猪', spyWord: '羊' },
+            { category: '动物', civilianWord: '鸡', spyWord: '鸭' },
+            { category: '动物', civilianWord: '鹅', spyWord: '鸭' },
+            { category: '动物', civilianWord: '鹌鹑', spyWord: '鸽子' },
+            { category: '动物', civilianWord: '蜜蜂', spyWord: '黄蜂' },
+            { category: '动物', civilianWord: '蝴蝶', spyWord: '蛾子' },
+            { category: '动物', civilianWord: '蜻蜓', spyWord: '豆娘' },
+            { category: '动物', civilianWord: '螳螂', spyWord: '蚂蚱' },
+            { category: '动物', civilianWord: '蝉', spyWord: '蟋蟀' },
+            { category: '动物', civilianWord: '蚂蚁', spyWord: '白蚁' },
+            { category: '动物', civilianWord: '瓢虫', spyWord: '天牛' },
+            { category: '动物', civilianWord: '蜗牛', spyWord: '螺蛳' },
+            { category: '动物', civilianWord: '壁虎', spyWord: '蜥蜴' }
         ];
 
+        let usedWordIndices = [];
         let gameState = {
-            playerCount: 4,
-            spyCount: 1,
-            players: [],
-            civilianWord: '',
-            spyWord: '',
-            currentPlayerIndex: 0,
-            wordRevealed: false
+            playerCount: 4, spyCount: 1, players: [], civilianWord: '', spyWord: '',
+            currentPlayerIndex: 0, wordRevealed: false
         };
 
         const playerCountSlider = document.getElementById('player-count');
@@ -415,35 +849,57 @@
         });
 
         function startGame() {
-            gameState.playerCount = parseInt(playerCountSlider.value);
-            gameState.spyCount = parseInt(spyCountSlider.value);
-            gameState.currentPlayerIndex = 0;
-            gameState.wordRevealed = false;
-
-            const pair = wordPairs[Math.floor(Math.random() * wordPairs.length)];
-            gameState.civilianWord = pair.civilianWord;
-            gameState.spyWord = pair.spyWord;
+            if (usedWordIndices.length >= allWordPairs.length) {
+                usedWordIndices = [];
+            }
+            
+            let availableIndices = [];
+            for (let i = 0; i < allWordPairs.length; i++) {
+                if (!usedWordIndices.includes(i)) {
+                    availableIndices.push(i);
+                }
+            }
+            
+            if (availableIndices.length === 0) {
+                availableIndices = Array.from({length: allWordPairs.length}, (_, i) => i);
+                usedWordIndices = [];
+            }
+            
+            const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+            usedWordIndices.push(randomIndex);
+            
+            const pair = allWordPairs[randomIndex];
+            gameState = {
+                playerCount: parseInt(playerCountSlider.value),
+                spyCount: parseInt(spyCountSlider.value),
+                players: [], civilianWord: pair.civilianWord, spyWord: pair.spyWord,
+                currentPlayerIndex: 0, wordRevealed: false
+            };
 
             const spyIndices = [];
             while (spyIndices.length < gameState.spyCount) {
                 const idx = Math.floor(Math.random() * gameState.playerCount);
-                if (!spyIndices.includes(idx)) {
-                    spyIndices.push(idx);
-                }
+                if (!spyIndices.includes(idx)) spyIndices.push(idx);
             }
 
-            gameState.players = [];
             for (let i = 0; i < gameState.playerCount; i++) {
                 gameState.players.push({
-                    id: i + 1,
-                    isSpy: spyIndices.includes(i),
+                    id: i + 1, isSpy: spyIndices.includes(i),
                     word: spyIndices.includes(i) ? gameState.spyWord : gameState.civilianWord,
                     isEliminated: false
                 });
             }
 
+            updateStats();
             showPage('word-page');
             updateWordCard();
+        }
+
+        function updateStats() {
+            const used = usedWordIndices.length;
+            const remaining = allWordPairs.length - used;
+            document.getElementById('stats-info').textContent = 
+                `词语库：${allWordPairs.length}组 | 本次已用：${used}组 | 剩余：${remaining}组`;
         }
 
         function updateWordCard() {
@@ -470,7 +926,6 @@
                 document.getElementById('word-revealed').classList.remove('hidden');
                 document.getElementById('word-card').classList.add('flipped');
                 gameState.wordRevealed = true;
-
                 if (gameState.currentPlayerIndex < gameState.playerCount - 1) {
                     document.getElementById('next-hint').classList.remove('hidden');
                 }
@@ -520,9 +975,7 @@
 
         function eliminatePlayer(playerId) {
             const player = gameState.players.find(p => p.id === playerId);
-            if (player) {
-                player.isEliminated = true;
-            }
+            if (player) player.isEliminated = true;
 
             const remainingSpies = gameState.players.filter(p => p.isSpy && !p.isEliminated).length;
             const remainingCivilians = gameState.players.filter(p => !p.isSpy && !p.isEliminated).length;
@@ -537,9 +990,7 @@
             }
         }
 
-        function goBackToPlay() {
-            showPage('play-page');
-        }
+        function goBackToPlay() { showPage('play-page'); }
 
         function showResult(title, type) {
             showPage('result-page');
@@ -547,15 +998,10 @@
             document.getElementById('result-title').className = `result-title ${type}`;
             document.getElementById('civilian-word').textContent = gameState.civilianWord;
             document.getElementById('spy-word').textContent = gameState.spyWord;
-            
-            if (type === 'win') {
-                createConfetti();
-            }
+            if (type === 'win') createConfetti();
         }
 
-        function resetGame() {
-            showPage('setup-page');
-        }
+        function resetGame() { showPage('setup-page'); }
 
         function showPage(pageId) {
             ['setup-page', 'word-page', 'play-page', 'vote-page', 'result-page'].forEach(id => {
@@ -583,10 +1029,7 @@
                     confetti.animate([
                         { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
                         { transform: `translateY(100vh) rotate(720deg)`, opacity: 0 }
-                    ], {
-                        duration: duration,
-                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    }).onfinish = () => confetti.remove();
+                    ], { duration: duration, easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }).onfinish = () => confetti.remove();
                 }, i * 50);
             }
         }
