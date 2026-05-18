@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谁是卧底 - 聚会游戏</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #FFE66D;
+            --accent: #4ECDC4;
+            --dark: #2C3E50;
+            --light: #F7F9FC;
+            --purple: #9B59B6;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .setup-group {
+            margin-bottom: 24px;
+        }
+
+        .setup-label {
+            display: block;
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .slider-value {
+            min-width: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #FF8E53);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: white;
+            margin-top: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: #3DBDB5;
+        }
+
+        .word-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .word-card:hover {
+            transform: scale(1.02);
+        }
+
+        .word-card.flipped {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+
+        .player-number {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .word-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .tap-hint {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .player-chip {
+            padding: 12px 8px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            background: var(--light);
+            color: var(--dark);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .player-chip:hover {
+            transform: scale(1.05);
+        }
+
+        .player-chip.eliminated {
+            background: #ddd;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .player-chip.vote {
+            background: var(--primary);
+            color: white;
+        }
+
+        .status-text {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin: 20px 0;
+        }
+
+        .result-page {
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .result-title.win {
+            color: var(--accent);
+        }
+
+        .result-title.lose {
+            color: var(--primary);
+        }
+
+        .words-reveal {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .word-reveal {
+            flex: 1;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .word-reveal.civilian {
+            background: linear-gradient(135deg, var(--accent), #3DBDB5);
+            color: white;
+        }
+
+        .word-reveal.spy {
+            background: linear-gradient(135deg, var(--purple), #8E44AD);
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🎭 <span>谁是卧底</span></h1>
+
+            <div id="setup-page">
+                <div class="setup-group">
+                    <label class="setup-label">玩家人数</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="player-count" min="3" max="8" value="4">
+                        <span class="slider-value" id="player-count-display">4</span>
+                    </div>
+                </div>
+
+                <div class="setup-group">
+                    <label class="setup-label">卧底人数</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="spy-count" min="1" max="2" value="1">
+                        <span class="slider-value" id="spy-count-display">1</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="startGame()">开始游戏</button>
+            </div>
+
+            <div id="word-page" class="hidden">
+                <div class="word-card" id="word-card" onclick="revealWord()">
+                    <div class="player-number" id="current-player-text">玩家 1</div>
+                    <div id="word-hidden">点击查看词语</div>
+                    <div class="word-text hidden" id="word-revealed"></div>
+                    <div class="tap-hint hidden" id="next-hint">点击传给下一位</div>
+                </div>
+                <button class="btn btn-secondary hidden" id="start-play-btn" onclick="startPlaying()">开始描述</button>
+            </div>
+
+            <div id="play-page" class="hidden">
+                <div class="status-text">轮流描述你的词语吧！</div>
+                <div class="players-grid" id="players-grid"></div>
+                <button class="btn btn-primary" onclick="startVoting()">开始投票</button>
+                <button class="btn btn-secondary" onclick="resetGame()">重新开始</button>
+            </div>
+
+            <div id="vote-page" class="hidden">
+                <div class="status-text">你怀疑谁是卧底？</div>
+                <div class="players-grid" id="vote-grid"></div>
+                <button class="btn btn-secondary" onclick="goBackToPlay()">取消</button>
+            </div>
+
+            <div id="result-page" class="hidden">
+                <div class="result-page">
+                    <div class="result-title" id="result-title"></div>
+                    <div class="words-reveal">
+                        <div class="word-reveal civilian">
+                            <div>👥 平民词</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; margin-top: 8px;" id="civilian-word"></div>
+                        </div>
+                        <div class="word-reveal spy">
+                            <div>🕵️ 卧底词</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; margin-top: 8px;" id="spy-word"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="resetGame()">再来一局</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const wordPairs = [
+            { category: '网络热词', civilianWord: 'yyds', spyWord: '绝绝子' },
+            { category: '网络热词', civilianWord: '躺平', spyWord: '摆烂' },
+            { category: '网络热词', civilianWord: '社恐', spyWord: '社牛' },
+            { category: '网络热词', civilianWord: '破防', spyWord: 'emo' },
+            { category: '网络热词', civilianWord: '内卷', spyWord: '内耗' },
+            { category: '社交媒体', civilianWord: '抖音', spyWord: '快手' },
+            { category: '社交媒体', civilianWord: '微博', spyWord: '小红书' },
+            { category: '科技产品', civilianWord: 'iPhone', spyWord: '华为' },
+            { category: '科技产品', civilianWord: 'MacBook', spyWord: 'iPad' },
+            { category: '美食', civilianWord: '奶茶', spyWord: '咖啡' },
+            { category: '美食', civilianWord: '火锅', spyWord: '麻辣烫' },
+            { category: '美食', civilianWord: '烧烤', spyWord: '烤肉' },
+            { category: '娱乐', civilianWord: '电影', spyWord: '电视剧' },
+            { category: '娱乐', civilianWord: '唱歌', spyWord: '跳舞' },
+            { category: '日常', civilianWord: '公交', spyWord: '地铁' },
+            { category: '日常', civilianWord: '牙刷', spyWord: '牙膏' },
+            { category: '动物', civilianWord: '猫', spyWord: '狗' },
+            { category: '动物', civilianWord: '老虎', spyWord: '狮子' }
+        ];
+
+        let gameState = {
+            playerCount: 4,
+            spyCount: 1,
+            players: [],
+            civilianWord: '',
+            spyWord: '',
+            currentPlayerIndex: 0,
+            wordRevealed: false
+        };
+
+        const playerCountSlider = document.getElementById('player-count');
+        const spyCountSlider = document.getElementById('spy-count');
+        const playerCountDisplay = document.getElementById('player-count-display');
+        const spyCountDisplay = document.getElementById('spy-count-display');
+
+        playerCountSlider.addEventListener('input', function() {
+            playerCountDisplay.textContent = this.value;
+            const maxSpy = Math.min(2, Math.floor(parseInt(this.value) / 2));
+            spyCountSlider.max = maxSpy;
+            if (parseInt(spyCountSlider.value) > maxSpy) {
+                spyCountSlider.value = maxSpy;
+                spyCountDisplay.textContent = maxSpy;
+            }
+        });
+
+        spyCountSlider.addEventListener('input', function() {
+            spyCountDisplay.textContent = this.value;
+        });
+
+        function startGame() {
+            gameState.playerCount = parseInt(playerCountSlider.value);
+            gameState.spyCount = parseInt(spyCountSlider.value);
+            gameState.currentPlayerIndex = 0;
+            gameState.wordRevealed = false;
+
+            const pair = wordPairs[Math.floor(Math.random() * wordPairs.length)];
+            gameState.civilianWord = pair.civilianWord;
+            gameState.spyWord = pair.spyWord;
+
+            const spyIndices = [];
+            while (spyIndices.length < gameState.spyCount) {
+                const idx = Math.floor(Math.random() * gameState.playerCount);
+                if (!spyIndices.includes(idx)) {
+                    spyIndices.push(idx);
+                }
+            }
+
+            gameState.players = [];
+            for (let i = 0; i < gameState.playerCount; i++) {
+                gameState.players.push({
+                    id: i + 1,
+                    isSpy: spyIndices.includes(i),
+                    word: spyIndices.includes(i) ? gameState.spyWord : gameState.civilianWord,
+                    isEliminated: false
+                });
+            }
+
+            showPage('word-page');
+            updateWordCard();
+        }
+
+        function updateWordCard() {
+            const player = gameState.players[gameState.currentPlayerIndex];
+            document.getElementById('current-player-text').textContent = `玩家 ${player.id}`;
+            document.getElementById('word-hidden').classList.remove('hidden');
+            document.getElementById('word-revealed').classList.add('hidden');
+            document.getElementById('next-hint').classList.add('hidden');
+            document.getElementById('word-card').classList.remove('flipped');
+            gameState.wordRevealed = false;
+
+            if (gameState.currentPlayerIndex === gameState.playerCount - 1) {
+                document.getElementById('start-play-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('start-play-btn').classList.add('hidden');
+            }
+        }
+
+        function revealWord() {
+            if (!gameState.wordRevealed) {
+                const player = gameState.players[gameState.currentPlayerIndex];
+                document.getElementById('word-hidden').classList.add('hidden');
+                document.getElementById('word-revealed').textContent = player.word;
+                document.getElementById('word-revealed').classList.remove('hidden');
+                document.getElementById('word-card').classList.add('flipped');
+                gameState.wordRevealed = true;
+
+                if (gameState.currentPlayerIndex < gameState.playerCount - 1) {
+                    document.getElementById('next-hint').classList.remove('hidden');
+                }
+            } else {
+                if (gameState.currentPlayerIndex < gameState.playerCount - 1) {
+                    gameState.currentPlayerIndex++;
+                    gameState.wordRevealed = false;
+                    updateWordCard();
+                }
+            }
+        }
+
+        function startPlaying() {
+            showPage('play-page');
+            renderPlayersGrid();
+        }
+
+        function renderPlayersGrid() {
+            const grid = document.getElementById('players-grid');
+            grid.innerHTML = '';
+            gameState.players.forEach(player => {
+                const chip = document.createElement('div');
+                chip.className = `player-chip ${player.isEliminated ? 'eliminated' : ''}`;
+                chip.textContent = `玩家 ${player.id}`;
+                grid.appendChild(chip);
+            });
+        }
+
+        function startVoting() {
+            showPage('vote-page');
+            renderVoteGrid();
+        }
+
+        function renderVoteGrid() {
+            const grid = document.getElementById('vote-grid');
+            grid.innerHTML = '';
+            gameState.players.forEach(player => {
+                if (!player.isEliminated) {
+                    const chip = document.createElement('div');
+                    chip.className = 'player-chip vote';
+                    chip.textContent = `玩家 ${player.id}`;
+                    chip.onclick = () => eliminatePlayer(player.id);
+                    grid.appendChild(chip);
+                }
+            });
+        }
+
+        function eliminatePlayer(playerId) {
+            const player = gameState.players.find(p => p.id === playerId);
+            if (player) {
+                player.isEliminated = true;
+            }
+
+            const remainingSpies = gameState.players.filter(p => p.isSpy && !p.isEliminated).length;
+            const remainingCivilians = gameState.players.filter(p => !p.isSpy && !p.isEliminated).length;
+
+            if (remainingSpies === 0) {
+                showResult('平民胜利！', 'win');
+            } else if (remainingCivilians <= remainingSpies) {
+                showResult('卧底胜利！', 'lose');
+            } else {
+                showPage('play-page');
+                renderPlayersGrid();
+            }
+        }
+
+        function goBackToPlay() {
+            showPage('play-page');
+        }
+
+        function showResult(title, type) {
+            showPage('result-page');
+            document.getElementById('result-title').textContent = title;
+            document.getElementById('result-title').className = `result-title ${type}`;
+            document.getElementById('civilian-word').textContent = gameState.civilianWord;
+            document.getElementById('spy-word').textContent = gameState.spyWord;
+            
+            if (type === 'win') {
+                createConfetti();
+            }
+        }
+
+        function resetGame() {
+            showPage('setup-page');
+        }
+
+        function showPage(pageId) {
+            ['setup-page', 'word-page', 'play-page', 'vote-page', 'result-page'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#FFE66D', '#4ECDC4', '#9B59B6', '#FF8E53'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    document.body.appendChild(confetti);
+
+                    const duration = 2000 + Math.random() * 2000;
+                    confetti.animate([
+                        { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                        { transform: `translateY(100vh) rotate(720deg)`, opacity: 0 }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    }).onfinish = () => confetti.remove();
+                }, i * 50);
+            }
+        }
+    </script>
+</body>
+</html>
